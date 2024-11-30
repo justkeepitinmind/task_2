@@ -17,7 +17,7 @@ private:
     // turn left  <==> idx-- (mod 4)
     const static std::vector<Point> DIRECTION;
     const static std::vector<char> DIRECTION_NAME;
-    bool speedUp;
+
     inline static int nxt(int x)
     {
         return x == 3 ? 0 : x + 1;
@@ -29,6 +29,7 @@ private:
 
     Point p;
     size_t heading;
+    bool speedUp;
 
 public:
     Executor() : p(), heading(0), speedUp(0) {};

@@ -7,6 +7,9 @@ namespace car
 class ExecutorImpl final : public Executor
 {
 public:
+    ExecutorImpl(const Point& p, char d) : Executor(p, d) {};
+    ExecutorImpl() : Executor() {};
+
     class ICommand
     {
     public:
