@@ -17,6 +17,7 @@ private:
     // turn left  <==> idx-- (mod 4)
     const static std::vector<Point> DIRECTION;
     const static std::vector<char> DIRECTION_NAME;
+    bool speedUp;
     inline static int nxt(int x)
     {
         return x == 3 ? 0 : x + 1;
@@ -29,30 +30,42 @@ private:
     Point p;
     size_t heading;
 
+public:
+    Executor() : p(), heading(0), speedUp(0) {};
+    Executor(const Point& p, char d);
+
+    void changeSpeed()
+    {
+        speedUp = !speedUp;
+    }
+
     void move()
     {
         p += DIRECTION[heading];
     }
 
-    void turn_right()
+    void turnRight()
     {
         heading = nxt(heading);
     }
 
-    void turn_left()
+    void turnLeft()
     {
         heading = pre(heading);
     }
 
-public:
-    Executor() : p(), heading(0) {};
-    Executor(const Point& p, char d);
-    Point get_position() const
+    // 是否在加速
+    bool isSpeedUp() const
+    {
+        return speedUp;
+    }
+
+    Point getPosition() const
     {
         return p;
     };
 
-    char get_directions() const
+    char getDirection() const
     {
         return DIRECTION_NAME[heading];
     }
