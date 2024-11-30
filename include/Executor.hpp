@@ -3,7 +3,9 @@
 #include <iostream>
 #include <vector>
 
-#include "point.h"
+#include "Point.hpp"
+namespace car
+{
 class Executor
 {
 private:
@@ -13,8 +15,8 @@ private:
     // 3 <==> E <==> {-1,0}
     // turn right <==> idx++ (mod 4)
     // turn left  <==> idx-- (mod 4)
-    const static std::vector<point> direction;
-    const static std::vector<char> direction_name;
+    const static std::vector<Point> DIRECTION;
+    const static std::vector<char> DIRECTION_NAME;
     inline static int nxt(int x)
     {
         return x == 3 ? 0 : x + 1;
@@ -24,12 +26,12 @@ private:
         return x == 0 ? 3 : x - 1;
     }
 
-    point p;
+    Point p;
     size_t heading;
 
     void move()
     {
-        p += direction[heading];
+        p += DIRECTION[heading];
     }
 
     void turn_right()
@@ -43,16 +45,18 @@ private:
     }
 
 public:
-    Executor(const point& p, char d);
-    point get_position() const
+    Executor() : p(), heading(0) {};
+    Executor(const Point& p, char d);
+    Point get_position() const
     {
         return p;
     };
 
     char get_directions() const
     {
-        return direction_name[heading];
+        return DIRECTION_NAME[heading];
     }
 
     void execute(const std::string& s);
 };
+}  // namespace car

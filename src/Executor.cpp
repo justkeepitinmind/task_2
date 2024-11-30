@@ -1,11 +1,13 @@
-#include "Executor.h"
+#include "Executor.hpp"
 
 #include <vector>
+namespace car
+{
 // heading表示朝向，对应四个方向（N、S、E、W）(均为char类型)
-const std::vector<point> Executor::direction = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-const std::vector<char> Executor::direction_name = {'N', 'E', 'S', 'W'};
+const std::vector<Point> Executor::DIRECTION = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+const std::vector<char> Executor::DIRECTION_NAME = {'N', 'E', 'S', 'W'};
 
-Executor::Executor(const point& p, char d) : p(p)
+Executor::Executor(const Point& p, char d) : p(p)
 {
     switch (d) {
     case 'N':
@@ -46,4 +48,5 @@ void Executor::execute(const std::string& s)
             std::cerr << "unkown instruction " << ch << ".\n";
         }
     }
+}
 }
