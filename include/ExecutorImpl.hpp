@@ -21,6 +21,8 @@ public:
     {
         void DoOperator(ExecutorImpl& executor) const noexcept override
         {
+            if (executor.isSpeedUp())
+                executor.move();
             executor.turnLeft();
         }
     };
@@ -29,6 +31,8 @@ public:
     {
         void DoOperator(ExecutorImpl& executor) const noexcept override
         {
+            if (executor.isSpeedUp())
+                executor.move();
             executor.turnRight();
         }
     };
@@ -37,9 +41,9 @@ public:
     {
         void DoOperator(ExecutorImpl& executor) const noexcept override
         {
-            executor.move();
             if (executor.isSpeedUp())
                 executor.move();
+            executor.move();
         }
     };
 

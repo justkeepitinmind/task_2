@@ -34,16 +34,20 @@ void Executor::execute(const std::string& s)
         switch (ch) {
         case 'M':
         case 'm':
-            move();
             if (isSpeedUp())
                 move();
+            move();
             break;
         case 'L':
         case 'l':
+            if (isSpeedUp())
+                move();
             turnLeft();
             break;
         case 'R':
         case 'r':
+            if (isSpeedUp())
+                move();
             turnRight();
             break;
         case 'F':
