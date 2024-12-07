@@ -7,7 +7,7 @@ namespace car
 const std::vector<Point> Executor::DIRECTION = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 const std::vector<char> Executor::DIRECTION_NAME = {'N', 'E', 'S', 'W'};
 
-Executor::Executor(const Point& p, char d) : p(p), speedUp(0)
+Executor::Executor(const Point& p, char d) : p(p), fast(0)
 {
     switch (d) {
     case 'N':
@@ -34,19 +34,19 @@ void Executor::execute(const std::string& s)
         switch (ch) {
         case 'M':
         case 'm':
-            if (isSpeedUp())
+            if (isFast())
                 move();
             move();
             break;
         case 'L':
         case 'l':
-            if (isSpeedUp())
+            if (isFast())
                 move();
             turnLeft();
             break;
         case 'R':
         case 'r':
-            if (isSpeedUp())
+            if (isFast())
                 move();
             turnRight();
             break;

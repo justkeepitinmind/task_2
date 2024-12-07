@@ -29,15 +29,15 @@ private:
 
     Point p;
     size_t heading;
-    bool speedUp;
+    bool fast;
 
 public:
-    Executor() : p(), heading(0), speedUp(0) {};
+    Executor() : p(), heading(0), fast(0) {};
     Executor(const Point& p, char d);
 
     void changeSpeed()
     {
-        speedUp = !speedUp;
+        fast = !fast;
     }
 
     void move()
@@ -56,9 +56,9 @@ public:
     }
 
     // 是否在加速
-    bool isSpeedUp() const
+    bool isFast() const
     {
-        return speedUp;
+        return fast;
     }
 
     Point getPosition() const
