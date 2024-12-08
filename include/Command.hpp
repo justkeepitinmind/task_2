@@ -1,18 +1,15 @@
 #pragma once
-#include "ExecutorImpl.hpp"
+#include <functional>
 
+#include "ExecutorImpl.hpp"
 namespace car
 {
-class ICommand
+using Command = std::function<void(PoseHandler& poseHandler)>;
+
+class TurnLeftCommand final
 {
 public:
-    virtual ~ICommand() = default;
-    virtual void DoOperator(PoseHandler& poseHandler) const noexcept = 0;
-};
-
-class TurnLeftCommand final : public ICommand
-{
-    void DoOperator(PoseHandler& poseHandler) const noexcept override
+    void operator()(PoseHandler& poseHandler) const noexcept
     {
         if (poseHandler.isFast())
             poseHandler.move();
@@ -20,9 +17,10 @@ class TurnLeftCommand final : public ICommand
     }
 };
 
-class TurnRightCommand final : public ICommand
+class TurnRightCommand final
 {
-    void DoOperator(PoseHandler& poseHandler) const noexcept override
+public:
+    void operator()(PoseHandler& poseHandler) const noexcept
     {
         if (poseHandler.isFast())
             poseHandler.move();
@@ -30,9 +28,10 @@ class TurnRightCommand final : public ICommand
     }
 };
 
-class MoveCommand final : public ICommand
+class MoveCommand final
 {
-    void DoOperator(PoseHandler& poseHandler) const noexcept override
+public:
+    void operator()(PoseHandler& poseHandler) const noexcept
     {
         if (poseHandler.isFast())
             poseHandler.move();
@@ -40,17 +39,19 @@ class MoveCommand final : public ICommand
     }
 };
 
-class ChangeSpeedCommand final : public ICommand
+class ChangeSpeedCommand final
 {
-    void DoOperator(PoseHandler& poseHandler) const noexcept override
+public:
+    void operator()(PoseHandler& poseHandler) const noexcept
     {
         poseHandler.changeSpeed();
     }
 };
 
-class ReverseCommand final : public ICommand
+class ReverseCommand final
 {
-    void DoOperator(PoseHandler& poseHandler) const noexcept override
+public:
+    void operator()(PoseHandler& poseHandler) const noexcept
     {
         poseHandler.reverse();
     }
