@@ -17,14 +17,17 @@ private:
     Point p;
     size_t heading;
     bool fast;
+    int forward;
 
 public:
-    PoseHandler() : p(), heading(0), fast(0) {};
+    PoseHandler() : p(), heading(0), fast(0), forward(1) {};
     explicit PoseHandler(const Point& p, char d) noexcept;
 
     void changeSpeed() noexcept;
 
     void move() noexcept;
+
+    void reverse() noexcept;
 
     void turnRight() noexcept;
 

@@ -47,4 +47,12 @@ class ChangeSpeedCommand final : public ICommand
         poseHandler.changeSpeed();
     }
 };
-}
+
+class ReverseCommand final : public ICommand
+{
+    void DoOperator(PoseHandler& poseHandler) const noexcept override
+    {
+        poseHandler.reverse();
+    }
+};
+}  // namespace car

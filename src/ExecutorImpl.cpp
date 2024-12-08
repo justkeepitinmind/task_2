@@ -34,7 +34,7 @@ void ExecutorImpl::execute(const std::string& s) noexcept
     cmderMap['L'] = std::make_unique<TurnLeftCommand>();
     cmderMap['R'] = std::make_unique<TurnRightCommand>();
     cmderMap['F'] = std::make_unique<ChangeSpeedCommand>();
-
+    cmderMap['B'] = std::make_unique<ReverseCommand>();
     for (const auto ch : s) {
         std::unique_ptr<ICommand> cmd;
         if (cmderMap.find(ch) != cmderMap.end()) {

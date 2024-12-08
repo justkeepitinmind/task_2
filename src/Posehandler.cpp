@@ -21,8 +21,13 @@ void PoseHandler::changeSpeed() noexcept
 
 void PoseHandler::move() noexcept
 {
-    p += __DIRECTION[heading];
+    p += __DIRECTION[heading] * forward;
 }
+
+void PoseHandler::reverse() noexcept
+{
+    forward = -forward;
+};
 
 void PoseHandler::turnRight() noexcept
 {
@@ -55,7 +60,7 @@ Pose PoseHandler::getPose() const noexcept
     return Pose{getPosition(), getDirection()};
 };
 
-PoseHandler::PoseHandler(const Point& p, char d) noexcept : p(p), fast(0)
+PoseHandler::PoseHandler(const Point& p, char d) noexcept : p(p), fast(0), forward(1)
 {
     switch (d) {
     case 'N':

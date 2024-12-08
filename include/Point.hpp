@@ -27,6 +27,11 @@ struct Point {
     {
         return {x - o.x, y - o.y};
     }
+
+    Point operator*(const int a) const noexcept
+    {
+        return {a * x, a * y};
+    }
     friend std::ostream& operator<<(std::ostream& os, const Point& p) noexcept
     {
         return os << p.x << " " << p.y;
