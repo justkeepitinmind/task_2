@@ -4,59 +4,26 @@
 #include <vector>
 
 #include "Point.hpp"
+#include "PoseHandler.hpp"
 namespace car
 {
 class Executor
 {
-private:
-    // 0 <==> N <==> {0,1}
-    // 1 <==> E <==> {1,0}
-    // 2 <==> S <==> {0,-1}
-    // 3 <==> E <==> {-1,0}
-    // turn right <==> idx++ (mod 4)
-    // turn left  <==> idx-- (mod 4)
-    const static std::vector<Point> DIRECTION;
-    const static std::vector<char> DIRECTION_NAME;
-    inline static int nxt(int x)
-    {
-        return x == 3 ? 0 : x + 1;
-    }
-    inline static int pre(int x)
-    {
-        return x == 0 ? 3 : x - 1;
-    }
-
-    Point p;
-    size_t heading;
-
-    void move()
-    {
-        p += DIRECTION[heading];
-    }
-
-    void turn_right()
-    {
-        heading = nxt(heading);
-    }
-
-    void turn_left()
-    {
-        heading = pre(heading);
-    }
-
 public:
-    Executor() : p(), heading(0) {};
-    Executor(const Point& p, char d);
-    Point get_position() const
-    {
-        return p;
-    };
+    // use default contruction and deconstruction function
+    Executor(void) = default;
+    virtual ~Executor(void) = default;
 
-    char get_directions() const
-    {
-        return DIRECTION_NAME[heading];
-    }
+    Executor(const Executor&) = delete;
+    Executor operator=(const Executor&) = delete;
 
-    void execute(const std::string& s);
+    // 是否在加速
+    static Executor* NewExecutor(const PoseHandler& poseHanler = {});
+
+    virtual Point getPosition() const noexcept = 0;
+
+    virtual char getDirection() const noexcept = 0;
+
+    virtual void execute(const std::string& s) noexcept = 0;
 };
 }  // namespace car
