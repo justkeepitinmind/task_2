@@ -15,18 +15,6 @@ private:
     // 3 <==> E <==> {-1,0}
     // turn right <==> idx++ (mod 4)
     // turn left  <==> idx-- (mod 4)
-    const static std::vector<Point> DIRECTION;
-    const static std::vector<char> DIRECTION_NAME;
-
-    inline static int nxt(int x)
-    {
-        return x == 3 ? 0 : x + 1;
-    }
-    inline static int pre(int x)
-    {
-        return x == 0 ? 3 : x - 1;
-    }
-
     Point p;
     size_t heading;
     bool fast;
