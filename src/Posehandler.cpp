@@ -5,14 +5,14 @@ namespace car
 // heading表示朝向，对应四个方向（N、S、E、W）(均为char类型)
 const std::vector<Point> __DIRECTION = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 const std::vector<char> __DIRECTION_NAME = {'N', 'E', 'S', 'W'};
-inline int nxt(int x)
-{
-    return x == 3 ? 0 : x + 1;
-}
-inline int pre(int x)
-{
-    return x == 0 ? 3 : x - 1;
-}
+// inline int nxt(int x)
+// {
+//     return x == 3 ? 0 : x + 1;
+// }
+// inline int pre(int x)
+// {
+//     return x == 0 ? 3 : x - 1;
+// }
 
 void PoseHandler::changeSpeed() noexcept
 {
@@ -31,7 +31,7 @@ void PoseHandler::turnRight() noexcept
 
 void PoseHandler::turnLeft() noexcept
 {
-    heading = heading == 0 ? 1 : heading - 1;
+    heading = heading == 0 ? 3 : heading - 1;
 }
 
 // 是否在加速

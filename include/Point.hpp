@@ -52,5 +52,10 @@ struct Pose {
     {
         return p == o.p && heading == o.heading;
     }
+
+    friend std::ostream& operator<<(std::ostream& os, Pose& pose) noexcept
+    {
+        return os << "position: " << pose.p << " heading :" << pose.heading;
+    }
 };
 }  // namespace car
