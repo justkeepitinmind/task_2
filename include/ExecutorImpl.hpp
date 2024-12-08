@@ -7,10 +7,17 @@ namespace car
 {
 class ExecutorImpl final : public Executor
 {
-public:
-    ExecutorImpl(const Point& p, char d) : Executor(p, d) {};
-    ExecutorImpl() : Executor() {};
+private:
+    PoseHandler poseHandler;
 
-    void execute(const std::string& s);
+public:
+    ExecutorImpl(const Point& p, char d) : poseHandler(p, d) {};
+    ExecutorImpl() : poseHandler() {};
+
+    Point getPosition() const noexcept override;
+
+    char getDirection() const noexcept override;
+
+    void execute(const std::string& s) noexcept override;
 };
 }  // namespace car

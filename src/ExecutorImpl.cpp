@@ -1,25 +1,34 @@
 #include "ExecutorImpl.hpp"
 
 #include <memory>
+#include <unordered_map>
 
 #include "Command.hpp"
 namespace car
 {
-void ExecutorImpl::execute(const std::string& s)
+
+Point ExecutorImpl::getPosition() const noexcept
 {
+    return poseHandler.getPosition();
+}
+
+char ExecutorImpl::getDirection() const noexcept
+{
+    return poseHandler.getDirection();
+}
+
+void ExecutorImpl::execute(const std::string& s) noexcept
+{
+    std::unordered_map<char, std::unique_ptr<ICommand>> cmderMap;
+    cmderMap['M'] = std::make_unique<MoveCommand>();
+    cmderMap['L'] = std::make_unique<TurnLeftCommand>();
+    cmderMap['R'] = std::make_unique<TurnRightCommand>();
+    cmderMap['F'] = std::make_unique<ChangeSpeedCommand>();
+
     for (const auto ch : s) {
-        if (ch == 'm' || ch == 'M') {
-            std::unique_ptr<ICommand> cmd(new MoveCommand());
-            cmd->DoOperator(*this);
-        } else if (ch == 'L' || ch == 'l') {
-            std::unique_ptr<ICommand> cmd(new TurnLeftCommand());
-            cmd->DoOperator(*this);
-        } else if (ch == 'R' || ch == 'r') {
-            std::unique_ptr<ICommand> cmd(new TurnRightCommand());
-            cmd->DoOperator(*this);
-        } else if (ch == 'F' || ch == 'f') {
-            std::unique_ptr<ICommand> cmd(new ChangeSpeedCommand());
-            cmd->DoOperator(*this);
+        std::unique_ptr<ICommand> cmd;
+        if (cmderMap.find(ch) != cmderMap.end()) {
+            cmderMap[ch]->DoOperator(poseHandler);
         } else {
             std::cerr << "unkown instruction " << ch << ".\n";
         }

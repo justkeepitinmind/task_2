@@ -5,7 +5,7 @@
 #include "Point.hpp"
 
 using namespace car;
-TEST(Executor, ExecutorImpl_changeSpeed_Test)
+TEST(ExecutorImplFast, ExecutorImpl_changeSpeed_Test)
 {
     ExecutorImpl executor(Point{5, 2}, 'E');
     executor.execute("FM");
