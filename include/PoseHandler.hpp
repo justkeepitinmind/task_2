@@ -13,8 +13,7 @@ private:
     // 1 <==> E <==> {1,0}
     // 2 <==> S <==> {0,-1}
     // 3 <==> E <==> {-1,0}
-    // turn right <==> idx++ (mod 4)
-    // turn left  <==> idx-- (mod 4)
+
     Point p;
     size_t heading;
     bool fast;
