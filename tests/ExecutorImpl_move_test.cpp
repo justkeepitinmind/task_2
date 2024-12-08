@@ -5,10 +5,16 @@
 #include "Point.hpp"
 
 using namespace car;
-TEST(Executor, ExecutorImpl_move_Test)
+
+TEST(ExecutorTest, should_return_x_plus_1_given_command_is_M_and_facing_is_E)
 {
-    ExecutorImpl executor(Point{5, 2}, 'N');
-    executor.execute("M");
-    EXPECT_EQ(executor.getPosition(), Point(5, 3));
-    // EXPECT_EQ(executor.getDirection(), 'N');
+    // given
+    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0}, 'E'));
+
+    // when
+    executor->execute("M");
+
+    // then
+    const Pose target{1, 0, 'E'};
+    ASSERT_EQ(executor->getPose(), target);
 }

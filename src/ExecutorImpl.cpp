@@ -7,6 +7,11 @@
 namespace car
 {
 
+Executor* Executor::NewExecutor(const Point& position, const char direction) noexcept
+{
+    return new ExecutorImpl(position, direction);
+};
+
 Point ExecutorImpl::getPosition() const noexcept
 {
     return poseHandler.getPosition();
@@ -16,6 +21,11 @@ char ExecutorImpl::getDirection() const noexcept
 {
     return poseHandler.getDirection();
 }
+
+Pose ExecutorImpl::getPose() const noexcept
+{
+    return poseHandler.getPose();
+};
 
 void ExecutorImpl::execute(const std::string& s) noexcept
 {

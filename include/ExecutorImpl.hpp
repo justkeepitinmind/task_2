@@ -11,12 +11,15 @@ private:
     PoseHandler poseHandler;
 
 public:
-    ExecutorImpl(const Point& p, char d) : poseHandler(p, d) {};
-    ExecutorImpl() : poseHandler() {};
+    explicit ExecutorImpl(const Point& p, char d) noexcept : poseHandler(p, d) {};
+
+    ExecutorImpl() noexcept : poseHandler() {};
 
     Point getPosition() const noexcept override;
 
     char getDirection() const noexcept override;
+
+    Pose getPose() const noexcept override;
 
     void execute(const std::string& s) noexcept override;
 };

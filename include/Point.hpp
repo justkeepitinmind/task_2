@@ -32,4 +32,25 @@ struct Point {
         return os << p.x << " " << p.y;
     }
 };
+
+struct Pose {
+    Point p;
+    char heading;
+    Pose() noexcept : p({0, 0}), heading('N')
+    {
+    }
+
+    explicit Pose(const Point& p, const char heading) noexcept : p(p), heading(heading)
+    {
+    }
+
+    explicit Pose(const int x, const int y, const char heading) noexcept : p(x, y), heading(heading)
+    {
+    }
+
+    bool operator==(const Pose& o) const noexcept
+    {
+        return p == o.p && heading == o.heading;
+    }
+};
 }  // namespace car

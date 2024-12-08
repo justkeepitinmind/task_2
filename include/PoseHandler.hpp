@@ -33,42 +33,23 @@ private:
 
 public:
     PoseHandler() : p(), heading(0), fast(0) {};
-    PoseHandler(const Point& p, char d);
+    explicit PoseHandler(const Point& p, char d) noexcept;
 
-    void changeSpeed()
-    {
-        fast = !fast;
-    }
+    void changeSpeed() noexcept;
 
-    void move()
-    {
-        p += DIRECTION[heading];
-    }
+    void move() noexcept;
 
-    void turnRight()
-    {
-        heading = nxt(heading);
-    }
+    void turnRight() noexcept;
 
-    void turnLeft()
-    {
-        heading = pre(heading);
-    }
+    void turnLeft() noexcept;
 
     // 是否在加速
-    bool isFast() const
-    {
-        return fast;
-    }
+    bool isFast() const noexcept;
 
-    Point getPosition() const
-    {
-        return p;
-    };
+    Point getPosition() const noexcept;
 
-    char getDirection() const
-    {
-        return DIRECTION_NAME[heading];
-    }
+    char getDirection() const noexcept;
+
+    Pose getPose() const noexcept;
 };
 }  // namespace car

@@ -17,12 +17,13 @@ public:
     Executor(const Executor&) = delete;
     Executor operator=(const Executor&) = delete;
 
-    // 是否在加速
-    static Executor* NewExecutor(const PoseHandler& poseHanler = {});
+    static Executor* NewExecutor(const Point& position = {0, 0}, const char direction = 'N') noexcept;
 
     virtual Point getPosition() const noexcept = 0;
 
     virtual char getDirection() const noexcept = 0;
+
+    virtual Pose getPose() const noexcept = 0;
 
     virtual void execute(const std::string& s) noexcept = 0;
 };
