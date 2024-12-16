@@ -5,28 +5,33 @@ namespace car
 // heading表示朝向，对应四个方向（N、S、E、W）(均为char类型)
 const std::vector<Point> __DIRECTION = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 const std::vector<char> __DIRECTION_NAME = {'N', 'E', 'S', 'W'};
-// inline int nxt(int x)
-// {
-//     return x == 3 ? 0 : x + 1;
-// }
-// inline int pre(int x)
-// {
-//     return x == 0 ? 3 : x - 1;
-// }
 
 void PoseHandler::changeSpeed() noexcept
 {
     fast = !fast;
 }
 
+void PoseHandler::go_forward() noexcept
+{
+    p += __DIRECTION[heading];
+}
+
+void PoseHandler::go_back() noexcept
+{
+    p -= __DIRECTION[heading];
+}
+
 void PoseHandler::move() noexcept
 {
-    p += __DIRECTION[heading] * forward;
+    if (forward)
+        go_forward();
+    else
+        go_back();
 }
 
 void PoseHandler::reverse() noexcept
 {
-    forward = -forward;
+    forward = !forward;
 };
 
 void PoseHandler::turnRight() noexcept
@@ -43,6 +48,11 @@ void PoseHandler::turnLeft() noexcept
 bool PoseHandler::isFast() const noexcept
 {
     return fast;
+}
+
+bool PoseHandler::isForward() const noexcept
+{
+    return forward;
 }
 
 Point PoseHandler::getPosition() const noexcept

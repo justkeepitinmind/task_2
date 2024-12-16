@@ -17,7 +17,10 @@ private:
     Point p;
     size_t heading;
     bool fast;
-    int forward;
+    bool forward;
+    void go_forward() noexcept;
+
+    void go_back() noexcept;
 
 public:
     PoseHandler() : p(), heading(0), fast(0), forward(1) {};
@@ -35,6 +38,8 @@ public:
 
     // 是否在加速
     bool isFast() const noexcept;
+
+    bool isForward() const noexcept;
 
     Point getPosition() const noexcept;
 

@@ -11,9 +11,14 @@ class TurnLeftCommand final
 public:
     void operator()(PoseHandler& poseHandler) const noexcept
     {
-        if (poseHandler.isFast())
+        if (poseHandler.isFast()) {
             poseHandler.move();
-        poseHandler.turnLeft();
+        }
+        if (poseHandler.isForward()) {
+            poseHandler.turnLeft();
+        } else {
+            poseHandler.turnRight();
+        }
     }
 };
 
@@ -22,9 +27,14 @@ class TurnRightCommand final
 public:
     void operator()(PoseHandler& poseHandler) const noexcept
     {
-        if (poseHandler.isFast())
+        if (poseHandler.isFast()) {
             poseHandler.move();
-        poseHandler.turnRight();
+        }
+        if (poseHandler.isForward()) {
+            poseHandler.turnRight();
+        } else {
+            poseHandler.turnLeft();
+        }
     }
 };
 
@@ -33,8 +43,9 @@ class MoveCommand final
 public:
     void operator()(PoseHandler& poseHandler) const noexcept
     {
-        if (poseHandler.isFast())
+        if (poseHandler.isFast()) {
             poseHandler.move();
+        }
         poseHandler.move();
     }
 };
