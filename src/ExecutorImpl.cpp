@@ -5,7 +5,7 @@
 #include <unordered_map>
 
 #include "Command.hpp"
-namespace car
+namespace adas
 {
 
 Executor* Executor::NewExecutor(const Point& position, const char direction) noexcept
@@ -31,4 +31,4 @@ void ExecutorImpl::execute(const std::string& s) noexcept
     }
 }
 
-}  // namespace car
+}  // namespace adas

@@ -1,6 +1,6 @@
 #include "Bus.hpp"
 
-namespace car
+namespace adas
 {
 class BusTurnLeftCommand final
 {
@@ -48,4 +48,4 @@ void Bus::execute(const std::string& s) noexcept
         }
     }
 }
-}  // namespace car
+}  // namespace adas

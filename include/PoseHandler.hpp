@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "Point.hpp"
-namespace car
+namespace adas
 {
 class PoseHandler
 {
@@ -36,7 +36,7 @@ public:
 
     void turnLeft() noexcept;
 
-    // 是否在加速
+    // 是否在加速`
     bool isFast() const noexcept;
 
     bool isForward() const noexcept;
@@ -47,4 +47,4 @@ public:
 
     Pose getPose() const noexcept;
 };
-}  // namespace car
+}  // namespace adas

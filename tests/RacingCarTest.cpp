@@ -3,7 +3,7 @@
 #include "Executor.hpp"
 #include "Point.hpp"
 #include "RacingCar.hpp"
-using namespace car;
+using namespace adas;
 
 TEST(RacingCarTest, should_return_N_and_y_plus_1_when_command_is_L_and_facing_is_E_and)
 {

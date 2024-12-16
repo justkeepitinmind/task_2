@@ -4,7 +4,7 @@
 
 #include "Executor.hpp"
 
-namespace car
+namespace adas
 {
 using Command = std::function<void(PoseHandler& poseHandler)>;
 
@@ -24,4 +24,4 @@ public:
 
     Pose getPose() const noexcept override;
 };
-}  // namespace car
+}  // namespace adas

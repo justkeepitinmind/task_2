@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-namespace car
+namespace adas
 {
 struct Point {
     int x, y;
@@ -64,4 +64,4 @@ struct Pose {
         return os << "position: " << pose.p << " heading :" << pose.heading;
     }
 };
-}  // namespace car
+}  // namespace adas

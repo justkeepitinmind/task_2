@@ -2,7 +2,7 @@
 
 #include "BaseExecutor.hpp"
 
-namespace car
+namespace adas
 {
 class ExecutorImpl final : public BaseExecutor
 {
@@ -13,4 +13,4 @@ public:
 
     void execute(const std::string& s) noexcept override;
 };
-}  // namespace car
+}  // namespace adas

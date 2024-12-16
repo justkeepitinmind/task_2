@@ -5,7 +5,7 @@
 
 #include "Point.hpp"
 #include "PoseHandler.hpp"
-namespace car
+namespace adas
 {
 class Executor
 {
@@ -33,4 +33,4 @@ public:
 
     virtual void execute(const std::string& s) noexcept = 0;
 };
-}  // namespace car
+}  // namespace adas

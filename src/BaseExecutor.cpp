@@ -7,7 +7,7 @@
 #include "Command.hpp"
 #include "ExecutorImpl.hpp"
 
-namespace car
+namespace adas
 {
 
 Point BaseExecutor::getPosition() const noexcept
@@ -25,4 +25,4 @@ Pose BaseExecutor::getPose() const noexcept
     return poseHandler.getPose();
 };
 
-}  // namespace car
+}  // namespace adas

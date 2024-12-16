@@ -3,7 +3,7 @@
 #include "Bus.hpp"
 #include "Executor.hpp"
 #include "Point.hpp"
-using namespace car;
+using namespace adas;
 
 TEST(BusTest, should_return_N_and_x_plus_1_when_command_is_L_and_facing_is_E_and)
 {

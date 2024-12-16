@@ -3,7 +3,7 @@
 #include "Executor.hpp"
 #include "ExecutorImpl.hpp"
 #include "Point.hpp"
-using namespace car;
+using namespace adas;
 TEST(ExecutorTest, should_return_x_minus_1_given_status_is_fast_command_is_M_and_facing_is_E)
 {
     // given

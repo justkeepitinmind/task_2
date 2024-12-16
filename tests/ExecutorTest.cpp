@@ -4,7 +4,7 @@
 #include "ExecutorImpl.hpp"
 #include "Point.hpp"
 
-using namespace car;
+using namespace adas;
 
 TEST(ExecutorTest, should_return_init_pose_when_without_command)
 {

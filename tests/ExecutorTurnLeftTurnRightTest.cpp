@@ -4,7 +4,7 @@
 #include "ExecutorImpl.hpp"
 #include "Point.hpp"
 
-using namespace car;
+using namespace adas;
 
 // R
 TEST(ExecutorTest, should_return_facing_S_given_command_is_R_and_facing_is_E)
