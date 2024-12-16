@@ -7,7 +7,7 @@ using namespace car;
 TEST(ExecutorTest, should_return_x_minus_1_given_status_is_fast_command_is_M_and_facing_is_E)
 {
     // given
-    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0}, 'E'));
+    std::unique_ptr<Executor> executor(Executor::NewExecutor<ExecutorImpl>({0, 0}, 'E'));
 
     // when
     executor->execute("BM");
@@ -20,7 +20,7 @@ TEST(ExecutorTest, should_return_x_minus_1_given_status_is_fast_command_is_M_and
 TEST(ExecutorTest, should_return_x_minus_2_given_status_is_fast_command_is_BM_and_facing_is_E)
 {
     // given
-    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0}, 'E'));
+    std::unique_ptr<Executor> executor(Executor::NewExecutor<ExecutorImpl>({0, 0}, 'E'));
 
     // when
     executor->execute("FBM");
@@ -33,7 +33,7 @@ TEST(ExecutorTest, should_return_x_minus_2_given_status_is_fast_command_is_BM_an
 TEST(ExecutorTest, should_return_S_and_x_minus_1_given_status_is_fast_command_is_BL_and_facing_is_E)
 {
     // given
-    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0}, 'E'));
+    std::unique_ptr<Executor> executor(Executor::NewExecutor<ExecutorImpl>({0, 0}, 'E'));
 
     // when
     executor->execute("FBL");
@@ -43,10 +43,10 @@ TEST(ExecutorTest, should_return_S_and_x_minus_1_given_status_is_fast_command_is
     ASSERT_EQ(executor->getPose(), target);
 }
 
-TEST(ExecutorTest, should_return_N_and_x_plus_1_given_status_is_fast_command_is_BR_and_facing_is_E)
+TEST(ExecutorTest, should_return_N_and_x_minus_1_given_status_is_fast_command_is_BR_and_facing_is_E)
 {
     // given
-    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0}, 'E'));
+    std::unique_ptr<Executor> executor(Executor::NewExecutor<ExecutorImpl>({0, 0}, 'E'));
 
     // when
     executor->execute("FBR");
@@ -59,7 +59,7 @@ TEST(ExecutorTest, should_return_N_and_x_plus_1_given_status_is_fast_command_is_
 TEST(ExecutorTest, should_return_y_plus_1_given_command_is_BBM_and_facing_is_N)
 {
     // given
-    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0}, 'N'));
+    std::unique_ptr<Executor> executor(Executor::NewExecutor<ExecutorImpl>({0, 0}, 'N'));
 
     // when
     executor->execute("BBM");

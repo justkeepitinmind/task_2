@@ -17,6 +17,12 @@ public:
     Executor(const Executor&) = delete;
     Executor operator=(const Executor&) = delete;
 
+    template <class T>
+    static Executor* NewExecutor(const Point& position = {0, 0}, const char direction = 'N') noexcept
+    {
+        return new T(position, direction);
+    };
+
     static Executor* NewExecutor(const Point& position = {0, 0}, const char direction = 'N') noexcept;
 
     virtual Point getPosition() const noexcept = 0;

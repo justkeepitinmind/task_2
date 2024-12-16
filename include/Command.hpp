@@ -4,8 +4,6 @@
 #include "ExecutorImpl.hpp"
 namespace car
 {
-using Command = std::function<void(PoseHandler& poseHandler)>;
-
 class TurnLeftCommand final
 {
 public:
@@ -67,4 +65,5 @@ public:
         poseHandler.reverse();
     }
 };
+
 }  // namespace car
